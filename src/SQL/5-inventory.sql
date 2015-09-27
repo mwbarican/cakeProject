@@ -1,0 +1,17 @@
+CREATE TABLE IF NOT EXISTS inventory(
+	item_id INT(10) NOT NULL,
+	created TIMESTAMP(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
+	location_id INT(10),
+	quantity INT(10) NOT NULL DEFAULT 0,
+	unit_id INT(10),
+	PRIMARY KEY (item_id,created),
+	FOREIGN KEY (item_id)
+		REFERENCES item(id)
+		ON DELETE CASCADE,
+	FOREIGN KEY (location_id)
+		REFERENCES location(id)
+		ON DELETE CASCADE,
+	FOREIGN KEY (unit_id)
+		REFERENCES unit(id)
+		ON DELETE CASCADE
+)ENGINE=InnoDB;
